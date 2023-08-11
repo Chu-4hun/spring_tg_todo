@@ -1,0 +1,24 @@
+server.port: 8081
+
+bot:
+  name: ${BOT_NAME}
+  token: ${BOT_TOKEN}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ani
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none # You might want to use "update" or "none" based on your needs
+    show-sql: true
+  flyway:
+    locations: classpath:db/migration  # Set the location of migration scripts
+    baselineOnMigrate: true            # Baseline the schema when migrating for the first time
+    url: jdbc:postgresql://localhost:5432/ani
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
